@@ -586,6 +586,7 @@ bench_all() {
   print_speedtest_chinaunicom
   print_speedtest_chinamobile
   print_speedtest_other
+  next
   print_end_time
   next
   cleanup
@@ -606,6 +607,7 @@ fast_bench() {
   next
   # print_io fast
   print_speedtest_fast
+  next
   print_end_time
   next
   cleanup
