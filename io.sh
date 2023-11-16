@@ -103,14 +103,14 @@ benchinit() {
 
   if [ ! -e 'tools.py' ]; then
     echo " Installing tools.py ..."
-    wget -4 --no-check-certificate https://cdn.jsdelivr.net/gh/oooldking/script@1.1.7/tools.py
+    wget -4 --no-check-certificate https://raw.githubusercontent.com/Yoech/no1bench/main/tools.py
   fi
   chmod a+rx tools.py
 
   if [ ! -e 'fast_com.py' ]; then
     echo " Installing Fast.com-cli ..."
-    wget -4 --no-check-certificate https://cdn.jsdelivr.net/gh/sanderjo/fast.com@master/fast_com.py
-    wget -4 --no-check-certificate https://cdn.jsdelivr.net/gh/sanderjo/fast.com@master/fast_com_example_usage.py
+    wget -4 --no-check-certificate https://raw.githubusercontent.com/Yoech/no1bench/main/fast_com.py
+    wget -4 --no-check-certificate https://raw.githubusercontent.com/Yoech/no1bench/main/fast_com_example_usage.py
   fi
   chmod a+rx fast_com.py
   chmod a+rx fast_com_example_usage.py
@@ -198,7 +198,6 @@ print_speedtest_chinatelecom(){
   next
   printf "%-20s%-18s%-18s%-18s%-18s\n" "电信节点" "上传" "下载" "延迟" "丢包率" | tee -a $log
   next
-  # speed_fast_com
   speed_test '35722' '天津电信'
   speed_test '34115' '天津电信5G'
   speed_test '5317' '南京电信5G'
@@ -218,7 +217,6 @@ print_speedtest_chinaunicom(){
   next
   printf "%-20s%-18s%-18s%-18s%-18s\n" "联通节点" "上传" "下载" "延迟" "丢包率" | tee -a $log
   next
-  speed_fast_com
   speed_test '4870' '长沙联通5G'
   speed_test '43752' '北京联通'
   speed_test '37235' '沈阳联通'
@@ -235,7 +233,6 @@ print_speedtest_chinamobile() {
   next
   printf "%-20s%-18s%-18s%-18s%-18s\n" "移动节点" "上传" "下载" "延迟" "丢包率" | tee -a $log
   next
-  speed_fast_com
   speed_test '25858' '北京移动5G'
   speed_test '29105' '西安移动5G'
   speed_test '54312' '杭州移动5G'
@@ -252,7 +249,6 @@ print_speedtest_other() {
   next
   printf "%-20s%-18s%-18s%-18s%-18s\n" "其他节点" "上传" "下载" "延迟" "丢包率" | tee -a $log
   next
-  speed_fast_com
   speed_test '30852' '昆山杜克大学'
   speed_test '35527' '成都广电'
   speed_test '5530' '重庆广电'
@@ -266,7 +262,7 @@ print_speedtest_fast() {
   printf "%-20s%-18s%-18s%-18s%-18s\n" "节点" "上传" "下载" "延迟" "丢包率" | tee -a $log
   next
   speed_test '' 'Speedtest.net'
-  speed_fast_com
+  #speed_fast_com
   speed_test '5317' '南京电信5G'
   speed_test '4870' '长沙联通5G'
   speed_test '25858' '北京移动5G'
@@ -581,7 +577,7 @@ bench_all() {
   print_system_info
   ip_info4
   next
-  # print_io
+  print_io
   print_speedtest_chinatelecom
   print_speedtest_chinaunicom
   print_speedtest_chinamobile
@@ -605,7 +601,7 @@ fast_bench() {
   print_system_info
   ip_info4
   next
-  # print_io fast
+  print_io fast
   print_speedtest_fast
   next
   print_end_time
